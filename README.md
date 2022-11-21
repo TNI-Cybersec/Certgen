@@ -18,3 +18,6 @@ $ python certgen.py
 Template | Output
 :---: | :---:
 ![template](templates/test.png) | ![output](output/Never%20Gonna%20Give%20You%20Up.png)
+
+## License
+Licensed under the [MIT license](LICENSE).
