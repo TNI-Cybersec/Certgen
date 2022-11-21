@@ -65,5 +65,5 @@ if __name__ == "__main__":
         print(f"[{i + 1}/{names_length}] Generating certificate of: {name}")
         gen_certificate(name)
 
-    print('-' * 80)
+    print('-' * os.get_terminal_size().columns)
     print(f"All {names_length} certificates done!")
