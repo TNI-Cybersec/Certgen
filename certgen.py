@@ -29,7 +29,6 @@ def gen_certificate(name):
 
     # Saving the certificates
     save_img(image_source, name)
-    print("Saving certificate of:", name)
 
 
 def draw_text(draw, text, font, adjw=0, adjh=0, font_size=100):
@@ -60,7 +59,10 @@ def save_img(img, name):
 if __name__ == "__main__":
 
     names = ["Zhong Xina", "Lucas Services", "Never Gonna Give You Up"]
-    for name in names:
+    names_length = len(names)
+    for i, name in enumerate(names):
+        print(f"[{i + 1}/{names_length}] Generating certificate of: {name}")
         gen_certificate(name)
 
-    print(len(names), "certificates done!")
+    print('-' * 80)
+    print(f"All {names_length} certificates done!")
