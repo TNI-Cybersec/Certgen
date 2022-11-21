@@ -16,7 +16,7 @@ ACTIVITY_NAME = "ACTIVITY NAME"
 DATE = "31-12-2023"
 
 
-def gen_certificate(name: str):
+def gen_certificate(name: str) -> None:
     """Function to save certificates as a .png file"""
 
     image_source = TEMPLATE.convert("RGB")
@@ -57,7 +57,9 @@ def save_img(img: Image, name: str) -> None:
 
 
 if __name__ == "__main__":
-    names = ["Zhong Xina", "Lucas Services", "Never Gonna Give You Up"]
+    # names = ["Zhong Xina", "Lucas Services", "Never Gonna Give You Up"]
+    # Get names from a text file, one name per line.
+    names = open("names.txt", "r").read().split("\n")
     names_length = len(names)
     for i, name in enumerate(names):
         print(f"[{i + 1}/{names_length}] Generating certificate of: {name}")
