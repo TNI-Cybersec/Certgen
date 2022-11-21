@@ -16,7 +16,7 @@ ACTIVITY_NAME = "ACTIVITY NAME"
 DATE = "31-12-2023"
 
 
-def gen_certificate(name):
+def gen_certificate(name: str):
     """Function to save certificates as a .png file"""
 
     image_source = TEMPLATE.convert("RGB")
@@ -31,25 +31,25 @@ def gen_certificate(name):
     save_img(image_source, name)
 
 
-def draw_text(draw, text, font, adjw=0, adjh=0, font_size=100):
+def draw_text(draw: ImageDraw, text: str, font: str, adjw: int = 0, adjh: int = 0, font_size: int = 100):
     font_file = get_font(font, font_size)
     name_width, name_height = get_textsize(draw, text, font=font_file)
     draw.text(((WIDTH - name_width + adjw) / 2, (HEIGHT - name_height + adjh) / 2 - 30),
               text, fill=FONT_COLOR, font=font_file)
 
 
-def get_textsize(draw, text, font):
+def get_textsize(draw: ImageDraw, text: str, font: ImageFont):
     left, top, right, bottom = draw.textbbox((0, 0), text, font=font)
     width = right - left
     height = bottom - top
     return width, height
 
 
-def get_font(font_path, font_size):
+def get_font(font_path: str, font_size: int):
     return ImageFont.truetype(font_path, font_size)
 
 
-def save_img(img, name):
+def save_img(img: Image, name: str):
     save_path = f"output/{ACTIVITY_NAME}"
     if not os.path.exists(save_path):
         os.makedirs(save_path)
