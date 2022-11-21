@@ -1,6 +1,7 @@
 # Certgen: Mass Certificate Generator
 # https://github.com/TNI-Cybersec/Certgen
 
+import os
 from PIL import Image, ImageFont, ImageDraw
 
 # Settings
@@ -27,7 +28,7 @@ def gen_certificate(name):
     draw_text(draw, name, adjh=150, font=FONT_FILE, font_size=90)
 
     # Saving the certificates
-    image_source.save("output/" + name + ".png")
+    save_img(image_source, name)
     print("Saving certificate of:", name)
 
 
@@ -47,6 +48,13 @@ def get_textsize(draw, text, font):
 
 def get_font(font_path, font_size):
     return ImageFont.truetype(font_path, font_size)
+
+
+def save_img(img, name):
+    save_path = f"output/{ACTIVITY_NAME}"
+    if not os.path.exists(save_path):
+        os.makedirs(save_path)
+    img.save(f"{save_path}/{name}.png")
 
 
 if __name__ == "__main__":
