@@ -60,6 +60,8 @@ if __name__ == "__main__":
     # names = ["Zhong Xina", "Lucas Services", "Never Gonna Give You Up"]
     # Get names from a text file, one name per line.
     names = open("names.txt", "r").read().split("\n")
+    while ("" in names):
+        names.remove("")
     names_length = len(names)
     for i, name in enumerate(names):
         print(f"[{i + 1}/{names_length}] Generating certificate of: {name}")
