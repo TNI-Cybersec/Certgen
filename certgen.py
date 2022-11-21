@@ -38,14 +38,14 @@ def draw_text(draw: ImageDraw, text: str, font: str, adjw: int = 0, adjh: int = 
               text, fill=FONT_COLOR, font=font_file)
 
 
-def get_textsize(draw: ImageDraw, text: str, font: ImageFont):
+def get_textsize(draw: ImageDraw, text: str, font: ImageFont) -> tuple[int, int]:
     left, top, right, bottom = draw.textbbox((0, 0), text, font=font)
     width = right - left
     height = bottom - top
     return width, height
 
 
-def get_font(font_path: str, font_size: int):
+def get_font(font_path: str, font_size: int) -> ImageFont:
     return ImageFont.truetype(font_path, font_size)
 
 
