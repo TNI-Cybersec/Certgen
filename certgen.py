@@ -31,7 +31,7 @@ def gen_certificate(name: str):
     save_img(image_source, name)
 
 
-def draw_text(draw: ImageDraw, text: str, font: str, adjw: int = 0, adjh: int = 0, font_size: int = 100):
+def draw_text(draw: ImageDraw, text: str, font: str, adjw: int = 0, adjh: int = 0, font_size: int = 100) -> None:
     font_file = get_font(font, font_size)
     name_width, name_height = get_textsize(draw, text, font=font_file)
     draw.text(((WIDTH - name_width + adjw) / 2, (HEIGHT - name_height + adjh) / 2 - 30),
@@ -49,7 +49,7 @@ def get_font(font_path: str, font_size: int) -> ImageFont:
     return ImageFont.truetype(font_path, font_size)
 
 
-def save_img(img: Image, name: str):
+def save_img(img: Image, name: str) -> None:
     save_path = f"output/{ACTIVITY_NAME}"
     if not os.path.exists(save_path):
         os.makedirs(save_path)
@@ -57,7 +57,6 @@ def save_img(img: Image, name: str):
 
 
 if __name__ == "__main__":
-
     names = ["Zhong Xina", "Lucas Services", "Never Gonna Give You Up"]
     names_length = len(names)
     for i, name in enumerate(names):
