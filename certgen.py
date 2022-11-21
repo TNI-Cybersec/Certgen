@@ -1,3 +1,6 @@
+# Certgen: Mass Certificate Generator
+# https://github.com/TNI-Cybersec/Certgen
+
 from PIL import Image, ImageFont, ImageDraw
 
 # Settings
