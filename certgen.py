@@ -17,7 +17,7 @@ DATE = "31-12-2023"
 
 
 def gen_certificate(name: str) -> None:
-    """Function to save certificates as a .png file"""
+    """Generate a certificate as a .png file"""
 
     image_source = TEMPLATE.convert("RGB")
     draw = ImageDraw.Draw(image_source)
@@ -27,11 +27,13 @@ def gen_certificate(name: str) -> None:
     draw_text(draw, DATE, adjw=-730, adjh=1040, font=FONT_FILE, font_size=45)
     draw_text(draw, name, adjh=150, font=FONT_FILE, font_size=90)
 
-    # Saving the certificates
+    # Saving the certificates.
     save_img(image_source, name)
 
 
 def draw_text(draw: ImageDraw, text: str, font: str, adjw: int = 0, adjh: int = 0, font_size: int = 100) -> None:
+    """Draw the text on the image"""
+
     font_file = get_font(font, font_size)
     name_width, name_height = get_textsize(draw, text, font=font_file)
     draw.text(((WIDTH - name_width + adjw) / 2, (HEIGHT - name_height + adjh) / 2 - 30),
@@ -39,6 +41,8 @@ def draw_text(draw: ImageDraw, text: str, font: str, adjw: int = 0, adjh: int = 
 
 
 def get_textsize(draw: ImageDraw, text: str, font: ImageFont) -> tuple[int, int]:
+    """Return a tuple of (width, height) of the text"""
+
     left, top, right, bottom = draw.textbbox((0, 0), text, font=font)
     width = right - left
     height = bottom - top
@@ -46,10 +50,14 @@ def get_textsize(draw: ImageDraw, text: str, font: ImageFont) -> tuple[int, int]
 
 
 def get_font(font_path: str, font_size: int) -> ImageFont:
+    """Return a font object"""
+
     return ImageFont.truetype(font_path, font_size)
 
 
 def save_img(img: Image, name: str) -> None:
+    """Save the image as a .png file"""
+
     save_path = f"output/{ACTIVITY_NAME}"
     if not os.path.exists(save_path):
         os.makedirs(save_path)
@@ -57,12 +65,16 @@ def save_img(img: Image, name: str) -> None:
 
 
 if __name__ == "__main__":
-    # names = ["Zhong Xina", "Lucas Services", "Never Gonna Give You Up"]
-    # Get names from a text file, one name per line.
+    # Get names from a text file and convert to a list, one name per line.
     names = open("names.txt", "r").read().split("\n")
+    # names = ["Zhong Xina", "Lucas Services", "Never Gonna Give You Up"]
+
+    # Remove empty line from names.
     while ("" in names):
         names.remove("")
     names_length = len(names)
+
+    # Generate certificates for each name.
     for i, name in enumerate(names):
         print(f"[{i + 1}/{names_length}] Generating certificate of: {name}")
         gen_certificate(name)
