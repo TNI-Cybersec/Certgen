@@ -23,9 +23,9 @@ def gen_certificate(name: str) -> None:
     draw = ImageDraw.Draw(image_source)
 
     # Drawing the text on the image.
-    draw_text(draw, ACTIVITY_NAME, adjh=-480, font=FONT_FILE_2, font_size=100)
-    draw_text(draw, DATE, adjw=-730, adjh=1040, font=FONT_FILE, font_size=45)
-    draw_text(draw, name, adjh=150, font=FONT_FILE, font_size=90)
+    draw_text(draw, ACTIVITY_NAME, adjh=-270, font=FONT_FILE_2, font_size=100)
+    draw_text(draw, DATE, adjw=-360, adjh=490, font=FONT_FILE, font_size=45)
+    draw_text(draw, name, adjh=50, font=FONT_FILE, font_size=90)
 
     # Saving the certificates.
     save_img(image_source, name)
@@ -36,7 +36,7 @@ def draw_text(draw: ImageDraw, text: str, font: str, adjw: int = 0, adjh: int = 
 
     font_file = get_font(font, font_size)
     name_width, name_height = get_textsize(draw, text, font=font_file)
-    draw.text(((WIDTH - name_width + adjw) / 2, (HEIGHT - name_height + adjh) / 2 - 30),
+    draw.text(((WIDTH - name_width) / 2 + adjw, (HEIGHT - name_height) / 2 + adjh),
               text, fill=FONT_COLOR, font=font_file)
 
 
